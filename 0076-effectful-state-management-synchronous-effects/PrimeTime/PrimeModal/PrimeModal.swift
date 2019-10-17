@@ -8,7 +8,7 @@ public enum PrimeModalAction {
   case removeFavoritePrimeTapped
 }
 
-public func primeModalReducer(state: inout PrimeModalState, action: PrimeModalAction) {
+public func primeModalReducer(state: inout PrimeModalState, action: PrimeModalAction) -> Effect {
   switch action {
   case .removeFavoritePrimeTapped:
     state.favoritePrimes.removeAll(where: { $0 == state.count })
@@ -16,6 +16,8 @@ public func primeModalReducer(state: inout PrimeModalState, action: PrimeModalAc
   case .saveFavoritePrimeTapped:
     state.favoritePrimes.append(state.count)
   }
+    
+  return {}
 }
 
 public struct IsPrimeModalView: View {
